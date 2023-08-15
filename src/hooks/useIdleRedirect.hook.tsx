@@ -1,6 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
+/**
+ * every param have default value when param empty
+ * @param initialMinutes number
+ * @param idleMinutes number
+ * @param redirectUrl string
+ * @returns
+ */
 export default function useIdleRedirect(
   initialMinutes: number = 15,
   idleMinutes: number = 15,
@@ -28,6 +35,9 @@ export default function useIdleRedirect(
       navigate(redirectUrl)
     }, timer)
 
+    /**
+     * every move/action like key up/down and click will trigger function handleUserActivity
+     */
     document.addEventListener('keyup', handleUserActivity)
     document.addEventListener('keydown', handleUserActivity)
     document.addEventListener('click', handleUserActivity)
